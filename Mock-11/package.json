@@ -7,9 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashSharma7746/Mock11.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashSharma7746/Mock11/issues"
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
