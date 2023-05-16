@@ -6,21 +6,16 @@ const jwt = require("jsonwebtoken");
 userRouter.post("/register", async (req, res) => {
   const { email, password, name, isAdmin } = req.body;
   try {
-    let already = await userModel.find({ email, password });
-    if (already.length > 0) {
-      res.status(201).send({ msg: "User is already registered" });
-    } else {
-      bcrypt.hash(password, 3, async (err, hash) => {
-        let newUser = new userModel({
-          email,
-          password: hash,
-          name,
-          isAdmin,
-        });
-        newUser.save();
-        res.status(201).send({ msg: "New User has been created" });
+    bcrypt.hash(password, 3, async (err, hash) => {
+      let newUser = new userModel({
+        email,
+        password: hash,
+        name,
+        isAdmin,
       });
-    }
+      newUser.save();
+      res.status(201).send({ msg: "New User has been created" });
+    });
   } catch (err) {
     res.status(400).send({ msg: err.message });
   }
